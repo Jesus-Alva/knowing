@@ -1,21 +1,10 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!--Extends lo usamos para mostrar un template, Siempre apunta a views-->
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@section('titulo')
+    Página principal
+@endsection
 
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
-    
-</head>
-    <h1>Página Pricipal</h1>
-<body >
-    
-</body>
-
-</html>
+@section('contenido')
+    Contenido de esta pagina
+@endsection
