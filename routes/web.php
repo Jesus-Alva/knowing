@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,10 +13,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*Syntaxys closure*/
 Route::get('/', function () {
     return view('principal');
 });
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+/*Con controladores*/
+Route::get('/crear-cuenta', [RegisterController::class, 'index']);
