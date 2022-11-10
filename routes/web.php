@@ -32,6 +32,7 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 /*1.-Se aplica route model binding para mostrar el username en la url*/
 Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'posts'])->name('posts.store');
 
 Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
 
