@@ -22,21 +22,54 @@
                 <p class="mt-5">
                     {{$post->descripcion}}
                 </p>
+
+
+                @auth
+                    @if($post->user_id === auth()->user()->id)
+                        <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                            @method('DELETE')<!--Metodo spoofing de laravel, permite agregar otro tipo de peticiones-->
+                            @csrf
+                            <input type="submit"
+                            value="Eliminar Publicación"
+                            class="bg-red-500 hover:bg-red-600 rounded p-2 text-white font-bold mt-4 cursor-pointer">
+                        </form>
+                    @endif
+                @endauth
             </div>
         </div>
         <div class="md:w-1/2 p-5">
             
             <div class="shadow bg-white p-5 mb-5">
 
+                <p class="text-xl font-bold text-center mb-0.5">Comentarios</p>
+
+                <div class=" bg-white mb-5 max-h-81 scroll overflow-y-scroll">
+                    @if ($post->comentarios->count())
+
+                        @foreach ( $post->comentarios as $comentario)
+
+                            <div class="p-5 border-gray-300 border-b">
+                                <a href="{{route('posts.index', $comentario->user)}}" class="font-bold">
+                                    {{ $comentario->user->username }}
+                                </a>
+                                <p>{{ $comentario->comentario }}</p>
+                                <p class="text-sm text-gray-400">{{ $comentario->created_at->diffForHumans() }}</p>
+                            </div>
+
+                        @endforeach
+
+                    @else
+                        <p class="p-10 text-center">Se el primero en comentar esta publicación</p>
+                    @endif
+                </div>
+
                 @auth
 
-                <p class="text-xl font-bold text-center mb-4">Agrega un Comentario</p>
-
-                @if (session('mensaje'))
-                    <div class="bg-green-500 p-2 rounded-lg mb-6 text-white uppercase font-bold">
-                        {{session('mensaje')}}
-                    </div>
-                @endif
+                    @if (session('mensaje'))
+                        <div class="bg-green-500 p-2 rounded-lg mb-6 text-white uppercase font-bold">
+                            {{session('mensaje')}}
+                        </div>
+                    @endif
 
                 <form action="{{ route('comentarios.store', ['post' => $post, 'user' => $user]) }}" method="POST">
                     
@@ -68,26 +101,6 @@
                 </form>
 
                 @endauth
-
-                <div class="bg-white shadow mb-5 max-h-96 mt-10">
-                    @if ($post->comentarios->count())
-
-                        @foreach ( $post->comentarios as $comentario)
-
-                            <div class="p-5 border-gray-300 border-b">
-                                <a href="{{route('posts.index', $comentario->user)}}" class="font-bold">
-                                    {{ $comentario->user->username }}
-                                </a>
-                                <p>{{ $comentario->comentario }}</p>
-                                <p class="text-sm text-gray-400">{{ $comentario->created_at->diffForHumans() }}</p>
-                            </div>
-
-                        @endforeach
-
-                    @else
-                        <p class="p-10 text-center">Aún No Hay Comentarios</p>
-                    @endif
-                </div>
 
             </div>
 
