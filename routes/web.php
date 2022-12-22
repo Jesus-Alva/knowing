@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
@@ -24,16 +25,14 @@ use Illuminate\Auth\Events\Logout;
 | Nota: si al usar una ruta que ya esta definida en web.php, te sale que no existe
 | limpia el cache con 'php artisan route:cache'
 */
-/*Syntaxys closure*/
-Route::get('/', function () {
-    return view('principal');
-});
+/*Routing tipo closure*/
+Route::get('/', HomeController::class)->name('home');
 /*Con controladores*/
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'store']);
+Route::post('/login', [LoginController::class, ' store']);
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 // Rutas para perfil

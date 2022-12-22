@@ -14,9 +14,10 @@
     <body class="bg-gray-100">
         <header class="p-5 border-b bg-white shadow">
             <div class="container mx-auto flex justify-between items-center">
-                <h1 class="text-3xl font-black">
-                    Knowing
-                </h1>
+                <a href="{{route('home')}}" class="text-3xl font-black flex justify-start">
+                    <img src="{{asset('img/Knowing-Logo.png')}}" alt="" class="flex w-10 h-10">
+                    nowing
+                </a>
                 <!--Nav alineado a la izquierda gracias al justify-between del div dentro del header-->
                 @auth
                     <nav class="flex gap-2 items-center">

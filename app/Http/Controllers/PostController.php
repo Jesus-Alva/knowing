@@ -16,7 +16,7 @@ class PostController extends Controller
     /*2.-Para usar route model binding, la function tiene que recibir un parametro*/
     public function index(User $user)
     {
-        $posts = Post::where('user_id', $user->id)->paginate(15);
+        $posts = Post::where('user_id', $user->id)->latest()->paginate(15);
 
         return view('layouts.dashboard', [
             'user'=>$user,
