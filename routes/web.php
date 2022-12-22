@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ComentarioController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,8 @@ use Illuminate\Auth\Events\Logout;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
+| Nota: si al usar una ruta que ya esta definida en web.php, te sale que no existe
+| limpia el cache con 'php artisan route:cache'
 */
 /*Syntaxys closure*/
 Route::get('/', function () {
@@ -50,3 +53,8 @@ Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.sto
 //Rutas para likes
 Route::post('/posts/{post}/likes', [LikeController::class, 'store'])->name('posts.likes.store');
 Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->name('posts.likes.destroy');
+
+//Rutas para seguir usuarios
+Route::post('/{user:username}/follow', [FollowerController::class, 'store'])->name('users.follow');
+//Rutas para dejar de seguir usuarios
+Route::delete('/{user:username}/unfollow', [FollowerController::class, 'destroy'])->name('users.unfollow');
