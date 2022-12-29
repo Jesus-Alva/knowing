@@ -10,6 +10,8 @@
         @stack('styles')
         @vite('resources/css/app.css')
         @vite('resources/js/app.js')
+
+        @livewireStyles
     </head>
     <body class="bg-gray-100">
         <header class="p-5 border-b bg-white shadow">
@@ -56,5 +58,7 @@
         <footer class="text-center mt-10 p-5 text-gray-500 font-bold uppercase">
             Knowing - Todos los derechos reservados {{ now()->year }}<!-- <--this is a helpers-->
         </footer>
+
+        @livewireScripts
     </body>
 </html>
