@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
 @section('titulo')
-    Página principal
+    Publicaciones
 @endsection
 
 @section('contenido')
     
     <x-listar-post :posts="$posts"/>
+    <div class="m-0">
+        {{ $posts->links() }}
+    </div>
 
 @endsection
