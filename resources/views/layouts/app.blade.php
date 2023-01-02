@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <link rel="icon" href="{{ asset('img/k-icon.png') }}">
-        <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <title>Knowing - @yield('titulo')</title>
         @stack('styles')
         @vite('resources/css/app.css')
