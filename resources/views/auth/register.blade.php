@@ -6,10 +6,10 @@
 
 @section('contenido')
     <div class="md:flex justify-center md:justify-center md:gap-10 md:items-center">
-        <div class="md:w-1/2  p-5">
+        <div class="md:w-4/12  p-5">
             <img class="rounded-xl shadow-xl" src="{{asset('img/image-register.jpg')}}" alt="Imagen registro de usuarios">
         </div>
-        <div class="md:w-6/12 bg-white p-6 rounded-lg shadow-lg">
+        <div class="md:w-4/12 bg-white p-6 rounded-lg shadow-lg">
             <form action="{{route('register')}}" method="POST" novalidate>
                 @csrf
                 <div class="mb-5">
